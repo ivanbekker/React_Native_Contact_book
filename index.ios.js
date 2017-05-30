@@ -8,16 +8,21 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  View
 } from 'react-native';
-import ContactBook from './modules/views/ContactBook';
+import { addNavigationHelpers } from 'react-navigation';
+
+import { Provider } from 'react-redux';
+import AppRoutes from './navigation/AppRoutes';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
 
 export default class React_Native_Contact_book extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ContactBook />
-      </View>
+      <Provider style={styles.container} store={store}>
+        <AppRoutes />
+      </Provider>
     );
   }
 }
